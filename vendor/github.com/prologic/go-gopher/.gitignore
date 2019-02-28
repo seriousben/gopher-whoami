@@ -1,0 +1,6 @@
+*~*
+*.bak
+coverage.txt
+./hello
+./client
+./fileserver
