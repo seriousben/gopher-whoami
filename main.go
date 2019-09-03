@@ -22,7 +22,7 @@ func gopherPort() int {
 
 func index(w gopher.ResponseWriter, r *gopher.Request) {
 	w.WriteInfo("started: " + started)
-	w.WriteInfo("now:     " + time.Now().Format(time.RFC3339))
+	w.WriteInfo("now:     " + time.Now().UTC().Format(time.RFC3339))
 	w.WriteInfo("addr:    " + gopherHost() + ":" + os.Getenv("GOPHER_PORT"))
 	w.WriteInfo("")
 	w.WriteInfo("++++++++++++++++++++++++++++++")
@@ -62,7 +62,7 @@ func foo(w gopher.ResponseWriter, r *gopher.Request) {
 }
 
 func main() {
-	started = time.Now().Format(time.RFC3339)
+	started = time.Now().UTC().Format(time.RFC3339)
 	mux := gopher.NewServeMux()
 
 	mux.HandleFunc("/", index)
