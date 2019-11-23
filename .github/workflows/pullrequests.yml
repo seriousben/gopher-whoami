@@ -1,5 +1,9 @@
 name: pullrequest
 on: [pull_request]
+
+env:
+  IMAGE: seriousben/gopher-whoami
+
 jobs:
   golangci-lint:
     name: runner / golangci-lint
@@ -11,3 +15,14 @@ jobs:
         # uses docker://reviewdog/action-golangci-lint:v1 # pre-build docker image
         with:
           github_token: ${{ secrets.github_token }}
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Docker build
+        run: |
+          docker build -t "$IMAGE":"$GITHUB_SHA" \
+            --build-arg GITHUB_SHA="$GITHUB_SHA" \
+            --build-arg GITHUB_REF="$GITHUB_REF" .
