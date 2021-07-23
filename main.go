@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	gopher "github.com/prologic/go-gopher"
+	gopher "git.mills.io/prologic/go-gopher"
 )
 
 var started string
