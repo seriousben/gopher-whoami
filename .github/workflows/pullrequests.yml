@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: golangci-lint
-        uses: reviewdog/action-golangci-lint@v1
+        uses: reviewdog/action-golangci-lint@v2.0.3
         # uses docker://reviewdog/action-golangci-lint:v1 # pre-build docker image
         with:
           github_token: ${{ secrets.github_token }}
