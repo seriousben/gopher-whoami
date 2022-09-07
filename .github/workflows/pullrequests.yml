@@ -9,7 +9,7 @@ jobs:
     name: runner / golangci-lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v1
         # uses docker://reviewdog/action-golangci-lint:v1 # pre-build docker image
@@ -20,7 +20,7 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Docker build
         run: |
           docker build -t "$IMAGE":"$GITHUB_SHA" \
